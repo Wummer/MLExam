@@ -31,10 +31,11 @@ def MLcov(data,ML):
 	return CML
 
 """
-Here we project the data onto the specified principal components
+Here we project the data onto the specified principal components.
+This is done by calculating the dot product between the PC and the data points.
+The new 2D coordinates are returned.
 
 """
-
 def transform(data,components):
 	new_x= []
 	new_y= []
