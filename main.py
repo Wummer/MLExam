@@ -2,6 +2,7 @@ import numpy as np
 import pylab as plt
 import PCA
 import NORM
+import REGRESSION as REG
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn import svm
 from sklearn.cluster import k_means
@@ -27,11 +28,33 @@ print "*"*45,"\n Question 1 \n"
 SSTrain = np.loadtxt("data/SSFRTrain2014.dt",unpack=False,delimiter=" ")
 SSTest = np.loadtxt("data/SSFRTest2014.dt",unpack=False,delimiter=" ")
 
-print SSTrain[0]
+alphas = np.arange(0.,10.,0.1)
+print "Maximum Likelihood Regression: \n"
+
+ML_MStrain, ML_MStest = REG.run(SSTrain,SSTest,model="linear")
+
+print "\nMaximum A posteriori Regression"
+bys_MStrain, bys_MStest = REG.run(SSTrain,SSTest,model="linear",
+	method="bayes",alphas=alphas)
 
 
+"""
+-------------------------------------------------------------------------------
+ Question 2: Non-Linear Regression
+-------------------------------------------------------------------------------
+"""
+print "*"*45,"\n Question 2 \n"
+#Inherit the alpha values from above
+degrees = np.arange(1,5,1)
+
+print "\nMaximum Likelihood Regression"
+for degree in degrees:
+	REG.run(SSTrain,SSTest,model="polynomial",degree=2)
+
+print "\nMaximum A posteriori Regression"
 
 
+raise SystemExit(0)
 
 """
 -------------------------------------------------------------------------------
@@ -56,11 +79,14 @@ for d in SGdata:
 	if d[-1] == 0:
 		SGTrain.append(d[:-1])
 
+#Normalizing the data 
+SGNorm = NORM.meanfree(SGTrain)
 
-SGMean = PCA.MLmean(SGTrain)
-SGCov = PCA.MLcov(SGTrain,SGMean)
+#Sampling mean and covariance from the normalized distribution
+SGMean = PCA.MLmean(SGNorm)
+SGCov = PCA.MLcov(SGNorm,SGMean)
+
 eigw,eigv =  np.linalg.eig(SGCov)
-SGNorm = SGTrain#NORM.meanfree(SGTrain)
 
 
 """ Python doesn't return an ordered list of eigenvalues/eigenvectors 
