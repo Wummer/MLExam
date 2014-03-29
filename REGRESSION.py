@@ -1,11 +1,11 @@
 from __future__ import division
+from operator import itemgetter
 import numpy as np
 import pylab as plt
 import sys
 
+np.random.seed(1)
 """ REGRESSION """
-
-""" MAXIMUM LIKELIHOOD SOLUTION """
 
 """
 Create the design matrix from vector X - either for linear or polynomial basis functions
@@ -14,12 +14,10 @@ Create the design matrix from vector X - either for linear or polynomial basis f
 [1, x1, x2, x3, x1^n, x2^n, x3^n, x1*x2, x1*x3, x2*x3] for each row 
 """
 def createDesignMatrix(X, model="linear",degree=2):
-	#if model=="linear, create an array of size 1+n, 
-	#else if model=="quadratic", create an array of 1 + n + n + (summation of X0..Xn-1)
 	l = len(X[0])
 	size = 1 + l
 
-	if model=="polynomial":
+	if model=="poly":
 		size += l + (((l-1)*l) / 2)
 
 	phi = np.zeros((len(X), size))
@@ -30,10 +28,10 @@ def createDesignMatrix(X, model="linear",degree=2):
 	for c in range(l):
 		phi[:,c+1] = X[:,c] # phi(x) = x
 
-		if model=="polynomial":
+		if model=="poly":
 			phi[:,c+1+l] = X[:,c] ** degree # phi(x) = x**n
 
-	if model=="polynomial":
+	if model=="poly":
 		# phi(x) = x1 * x2 ... for (n-1)!
 		j = 0
 		for c in xrange(0, l-1):
@@ -62,8 +60,8 @@ w = weight vectors from the train dataset
 X_test = the subset of X variables from the test set 
 """
 def predict(w, X_test,model,degree):
-	phi = createDesignMatrix(X_test,model,degree) #create design matrix from the test variables
-	y = np.zeros(len(phi)) # predicted classes
+	phi = createDesignMatrix(X_test,model,degree)
+	y = np.zeros(len(phi))
 
 	#summate over all rows in phi and save class vector in y
 	for i in xrange(len(phi)):
@@ -91,18 +89,15 @@ def calculateMS(t, y):
 
 
 """ MAXIMUM A POSTERIORI SOLUTION """
-def computeBayesianMeanAndCovariance(X, t, alpha):
+def computeBayesianMeanAndCovariance(X, t, degree, alpha,model):
 	beta = 1
 	#get design matrix
-	phi = createDesignMatrix(X)
+	phi = createDesignMatrix(X,model,degree)
 
-	#get second part of covariance matrix
+	#Creating the covariance matrix
 	bpp = beta * np.dot(phi.T, phi)
-
-	#get first part of covariance matrix
 	aI = np.zeros(bpp.shape)
-	np.fill_diagonal(aI, alpha) #alpha * I
-
+	np.fill_diagonal(aI, alpha)
 	covariance = aI + bpp
  	
  	#get each part of the mean equation
@@ -116,15 +111,7 @@ def computeBayesianMeanAndCovariance(X, t, alpha):
 """ 
 MAIN
 """
-def run(train,test,method="ml",model="linear",degree=2,alphas=[0,1]):
-
-	#Getting the vectors of all target variables
-	t_train = train[:,:-1]
-	t_test = test[:,:-1]
-
-	#Extracting the class information
-	c_train = train[:,-1]
-	c_test = test[:,-1]
+def run(t_train,c_train,t_test,c_test,method="ml",model="linear",degree=2,alpha=1):
 
 	if method=="ml":
 		#Building design matrix
@@ -133,43 +120,109 @@ def run(train,test,method="ml",model="linear",degree=2,alphas=[0,1]):
 
 		#Getting weight vectors
 		w = findML(phi_train, c_train)
-		print w[0]
 
 		#Getting the predicted target classes on 
 		y_train = predict(w, t_train,model,degree)
 		y_test = predict(w, t_test,model,degree)
 
-		#Calculating Mean Square (MS)
+		#Calculating Mean Squared Error (MS)
 		MStrain = calculateMS(y_train, c_train)
 		MStest = calculateMS(y_test,c_test)
 
-		print "Mean Square Error for the train set: ",MStrain
-		print "Mean Square Error for the test set: ",MStest
+		print "Mean Squared Error for the train set: ",MStrain
+		print "Mean Squared Error for the test set: ",MStest
 
 		return MStrain,MStest
 
 	""" Bayesian LR - MAIN """
-	if method=="bayes":
-		bys_MS = np.array([])
+	if method=="map":
 		bys_MS1 = [0,sys.maxint]
 		bys_MS2 = [0,sys.maxint]
 
+		bysMean, bysCovariance = computeBayesianMeanAndCovariance(t_train, c_train, degree, alpha, model)
+		bys_y_train = predict(bysMean, t_train, model, degree)
+		bys_y_test = predict(bysMean, t_test, model, degree)
+
+		#calculate Mean Squared (MS) for each variable selection
+		MS_train = calculateMS(c_train, bys_y_train)
+		MS_test = calculateMS(c_test, bys_y_test)
+
+
+	print "Mean Squared Error for the train set: ",MS_train
+	print "Mean Squared Error for the test set: ",MS_test
+
+	return MS_train,MS_test
+
+
+
+"""
+This function splits the shuffled train set in s equal sized splits. 
+It expects the features, the labels and number of slices. 
+It starts by making a copy of the labels and features and shuffles them. The lambda constant makes sure that it's always shuffled the same way 
+It returns a list of s slices containg lists of datapoints belonging to s.
+"""
+def sfold(features, labels, s):
+	featurefold = np.copy(features)
+	labelfold = np.copy(labels)
+
+	feature_slices = [featurefold[i::s] for i in xrange(s)]
+	label_slices = [labelfold[i::s] for i in xrange(s)]
+	return label_slices, feature_slices
+
+
+def MAP_Gridsearch(t_train, c_train, t_test, c_test ,alphas,degrees,model="map"):
+	folds = 5
+	results = []
+	labels_slices, features_slices = sfold(t_train, c_train, folds)
+
+	for deg in degrees: 
 		for alpha in alphas:
-			bysMean, bysCovariance = computeBayesianMeanAndCovariance(t_train, c_train, alpha)
-			bys_y_train = predict(bysMean, t_train, model, degree)
-			bys_y_test = predict(bysMean, t_test, model, degree)
+			te_temp = 0
+			tr_temp = 0
 
-			#calculate Mean Squared (MS) for each variable selection
-			MS_train = calculateMS(c_train, bys_y_train)
-			MS_test = calculateMS(c_test, bys_y_test)
+			#crossvalidation
+			for f in xrange(folds):
+				cv_train = []
+				cv_labels = []
 
-			#We only want to return the lowest 
-			if MS_train < bys_MS1[1]:
-				bys_MS1 = [alpha,MS_train]
-			if MS_test < bys_MS2[1]:
-				bys_MS2 =[alpha,MS_test]
+				#define test-set for this run
+				cv_test = np.array(features_slices[f])
+				cv_test_labels = np.array(labels_slices[f])
+				
+				#define train set for this run
+				for i in xrange(folds):  
+					if i != f:
+						for elem in features_slices[i]:
+							cv_train.append(elem)
+							
+						for lab in labels_slices[i]:
+							cv_labels.append(lab) #...and a list of adjacent labels
+			
+				cv_train = np.array(cv_train)
+				cv_labels = np.array(cv_labels)
 
-	print "Alpha value and Mean Squared Error for the train set: ",bys_MS1
-	print "Alpha value and Mean Square Error for the test set: ",bys_MS2
+				""" 
+				We then run the train/test splits with the MAP Regression
+				"""
+				Mean, Covariance = computeBayesianMeanAndCovariance(cv_train, cv_labels, deg, alpha, model)
+				y_pred_tr = predict(Mean, cv_train, "poly",deg)
+				y_pred = predict(Mean, cv_test, "poly",deg)
+					
+				MSE_tr = calculateMS(y_pred_tr, cv_labels)
+				MSE_te = calculateMS(y_pred, cv_test_labels)
+				
+				tr_temp += MSE_tr
+				te_temp += MSE_te
 
-	return bys_MS1,bys_MS2
+			tr_temp = tr_temp / folds
+			te_temp = te_temp / folds
+			results.append([tr_temp, te_temp, (deg, alpha)])
+
+
+	results = sorted(results,reverse=False, key=itemgetter(1) )
+	bestdeg_alpha = results[0][-1]
+	train_MSE = results[0][0]
+	test_MSE = results[0][1]
+
+	print "Best (degree, alpha): %s, train MSE = %.6f, test MSE = %.6f " %(bestdeg_alpha, train_MSE, test_MSE)
+	return bestdeg_alpha

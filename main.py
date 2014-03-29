@@ -3,9 +3,12 @@ import pylab as plt
 import PCA
 import NORM
 import REGRESSION as REG
+import CROSSVAL
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn import svm
 from sklearn.cluster import k_means
+
+np.random.seed(2)
 
 """ Some Pylab settings to make the plots look nice with LaTeX.
  If you do NOT have LaTeX then uncomment the following statements """
@@ -22,39 +25,96 @@ plt.rc('font', family='Computer Modern',size=16)
 -------------------------------------------------------------------------------
  Question 1: Linear Regression
 -------------------------------------------------------------------------------
+
+For comments on the specific functions, i.e. the source code, see
+REGRESSION.py & NORM.py 
+
 """
-print "*"*45,"\n Question 1 \n"
+print "*"*75,"\n Question 1 \n"
 
 SSTrain = np.loadtxt("data/SSFRTrain2014.dt",unpack=False,delimiter=" ")
 SSTest = np.loadtxt("data/SSFRTest2014.dt",unpack=False,delimiter=" ")
 
-alphas = np.arange(0.,10.,0.1)
+np.random.shuffle(SSTrain)
+np.random.shuffle(SSTest)
+
+#Getting the vectors of all target variables
+SSX_train = SSTrain[:,:-1]
+SSX_test = SSTest[:,:-1]
+
+#Extracting the class information
+SSY_train = SSTrain[:,-1]
+SSY_test = SSTest[:,-1]
+
+
 print "Maximum Likelihood Regression: \n"
+ML_MStrain, ML_MStest = REG.run(SSX_train,SSY_train,SSX_test,SSY_test,
+	model="linear")
 
-ML_MStrain, ML_MStest = REG.run(SSTrain,SSTest,model="linear")
-
-print "\nMaximum A posteriori Regression"
-bys_MStrain, bys_MStest = REG.run(SSTrain,SSTest,model="linear",
-	method="bayes",alphas=alphas)
-
-
+print "\n"
 """
 -------------------------------------------------------------------------------
  Question 2: Non-Linear Regression
 -------------------------------------------------------------------------------
-"""
-print "*"*45,"\n Question 2 \n"
-#Inherit the alpha values from above
-degrees = np.arange(1,5,1)
 
-print "\nMaximum Likelihood Regression"
-for degree in degrees:
-	REG.run(SSTrain,SSTest,model="polynomial",degree=2)
+For comments on the specific functions, see REGRESSION.py
+
+"""
+print "*"*75,"\n Question 2 \n"
+#Inherit the alpha values from above
+degrees = np.arange(2,5,1)
+alphas = np.arange(0.,30.,1)
+
+print "Finding optimal non-linear regression parameters."
+print  "Please wait while it calculates..."
+bestdeg,bestalpha = REG.MAP_Gridsearch(
+	SSX_train,SSY_train,SSX_test,SSY_test,alphas,degrees, model="poly")
+
 
 print "\nMaximum A posteriori Regression"
+REG.run(SSX_train,SSY_train,SSX_test,SSY_test,
+	method="map",model="poly", degree=bestdeg,alpha=bestalpha)
+
+
+
+"""
+-------------------------------------------------------------------------------
+ Question 3:Binary Classification using Support Vector Machines
+-------------------------------------------------------------------------------
+
+For comments on the specific functions, i.e. the source code, see
+ CROSVALL.py.
+
+"""
+print "*"*75,"\n Question 3 \n"
+
+SGdata = np.loadtxt("data/SGTrain2014.dt",unpack=False, delimiter=',')
+SGTest = np.loadtxt("data/SGTest2014.dt",unpack=False, delimiter=",")
+
+SGX = []
+SGY = []
+new_SGX = []
+new_SGY = []
+
+#Extracting the class labels from the data
+for d in SGdata:
+	SGX.append(d[:-1])
+	SGY.append(d[-1])
+for d in SGTest:
+	new_SGX.append(d[:-1])
+	new_SGY.append(d[-1])
+
+SGTrain = SGX
+SGX = NORM.meanfree(SGTrain)
+new_SGX = NORM.transformtest(SGTrain,new_SGX)
+
+print "Finding optimal Gamma and C pair parameters."
+print  "Please wait while it calculates..."
+CROSSVAL.SVM_Gridsearch(SGX, SGY, 5)
 
 
 raise SystemExit(0)
+
 
 """
 -------------------------------------------------------------------------------
@@ -65,14 +125,14 @@ For comments on the specific functions, i.e. the source code, see
 PCA.py & NORM.py 
 
 """
-print "*"*45,"\n Question 4 \n"
+print "*"*75,"\n Question 4 \n"
 
 SGdata = np.loadtxt("data/SGTrain2014.dt",unpack=False, delimiter=',')
 SGTest = np.loadtxt("data/SGTest2014.dt",unpack=False, delimiter=",")
 
 """
 Since we're only interested in dimensionality reduction of one class
- I extract the galaxies and remove their labels.
+ we extract the galaxies and remove their labels.
 """
 SGTrain = []
 for d in SGdata:
@@ -85,8 +145,7 @@ SGNorm = NORM.meanfree(SGTrain)
 #Sampling mean and covariance from the normalized distribution
 SGMean = PCA.MLmean(SGNorm)
 SGCov = PCA.MLcov(SGNorm,SGMean)
-
-eigw,eigv =  np.linalg.eig(SGCov)
+eigw,eigv = np.linalg.eig(SGCov)
 
 
 """ Python doesn't return an ordered list of eigenvalues/eigenvectors 
@@ -122,7 +181,7 @@ Question 5: K-means clustering
 -------------------------------------------------------------------------------
 Here I utilize the SK-learn k_means clustering method and my own PCA library.
 """
-print "*"*45,"\n Question 5 \n"
+print "*"*75,"\n Question 5 \n"
 
 centroids,label,inertia = k_means(SGNorm,n_clusters=2,init="random")
 
@@ -131,9 +190,9 @@ center_x,center_y = PCA.transform(centroids,SGPC)
 #plotting the projecting of the centroids onto the 2 PC
 plt.plot(new_SGX,new_SGY,"x",label="Projected data")
 plt.plot(center_x,center_y,"o",label="K-means centroids")
-plt.xlabel('First principal component')
+plt.xlabel('First principal component')	
 plt.ylabel('Second principal component')
-plt.legend(loc="lower left")
+plt.legend(loc="best")
 plt.title("Projected k-means centroids")
 plt.show()
 
@@ -145,15 +204,21 @@ Question 7: Multi-class Classification
 In this question I make use of two SK-learn libraries: K-NN and SVM.SVC.
 
 """
-print "*"*45,"\n Question 7 \n\n"
+print "*"*75,"\n Question 7 \n\n"
 
 VSTraindata = np.loadtxt("data/VSTrain2014.dt",unpack=False, delimiter=',')
 VSTest = np.loadtxt("data/VSTest2014.dt",unpack=False, delimiter=',')
+np.random.shuffle(VSTraindata)
+np.random.shuffle(VSTest)
+
 iterations = 10 #Used to control how many runs we want to average over
 KNN_totalresult = []
 SVM_totalresult = []
 
-K = [1,5,9,13,17,21,25]
+""" Parameters for the classifiers"""
+K = np.arange(1,15,1)
+C= np.arange(0.005,1,0.005)
+
 VSX = []
 VSY = []
 new_VSX = []
@@ -170,96 +235,33 @@ for d in VSTest:
 VSTrain = VSX
 VSX = NORM.meanfree(VSTrain)
 new_VSX = NORM.transformtest(VSTrain,new_VSX)
-print VSTrain[0]
-print VSX[0]
 
-"""
-Here I run and test the SK-learn KNN with different values of K's
-for i number of iterations
-"""
-for k in K:
-	avg_result = []
-	print "Training and testing %d-NN"%k
-	trainacc = 0
-	testacc = 0
-	for i in xrange(iterations):
-		neigh = KNeighborsClassifier(n_neighbors=k)
-		neigh.fit(VSX,VSY)
-		trainacc += neigh.score(VSX,VSY)
-		testacc += neigh.score(new_VSX,new_VSY)
 
-	avg_result = [trainacc/iterations,testacc/iterations]
-	KNN_totalresult.append(avg_result)
+"""Testing for the best K-setting via cross-validation"""
+print "Finding the optimal K value."
+print "Please wait while it calculates..."
+Best_K = CROSSVAL.KNN_Crossvalidation(VSX,VSY, 5, K)
 
-""" Restructuring for easy plotting """
-trainacc = [a[0] for a in KNN_totalresult]
-testacc = [a[1] for a in KNN_totalresult]
-plt.plot(K,trainacc,"x-",label="Train acc")
-plt.plot(K,testacc,"x-",label="Test acc")
-plt.xlabel('K')
-plt.ylabel('Accuracy')
-plt.legend(loc='best')
-plt.title('Accuracies for the K-NN')
-plt.show()
+KNN = KNeighborsClassifier(n_neighbors=Best_K)
+KNN.fit(VSX,VSY)
+print "KNN Accuracy on train: ",KNN.score(VSX,VSY)
+print "KNN Accuracy on test: ",KNN.score(new_VSX,new_VSY)
 
 print "\n"
+
 """
 Here I run and test the SK-learn implementation of SVM with a linear kernel
- thats based on the LIBSVM. I test multiple values for C and run it 10 times.
+ thats based on the LIBSVM. I test multiple values for C via cross-validation.
+ Then I run the classifier on the test set 10 times and average over the results.
  Multi-class strategy is one-by-one.
 """
-C = np.linspace(0.00001,1,20)
-C2 = np.linspace(0.1,10,10)
 
+print "Finding the optimal C value."
+print "Please wait while it calculates..."
+Best_C = CROSSVAL.LinSVM_Crossvalidation(VSX,VSY,5,C)
 
-for c in C:
-	print "Training and testing with C as: ",c
-	avg_result = []
-	trainacc = 0
-	testacc  = 0
-	for i in xrange(iterations):
-		LinSVM = svm.SVC(C=c,kernel='linear')
-		LinSVM.fit(VSX,VSY)
-		trainacc += LinSVM.score(VSX,VSY)
-		testacc += LinSVM.score(new_VSX,new_VSY)
-	avg_result = [trainacc/iterations,testacc/iterations]
-	SVM_totalresult.append(avg_result)
+LinSVM = svm.SVC(kernel='linear',C=Best_C)
+LinSVM.fit(VSX,VSY)
 
-""" Restructuring for easy plotting """
-trainacc = [a[0] for a in SVM_totalresult]
-testacc = [a[1] for a in SVM_totalresult]
-plt.plot(C,trainacc,"x-",label="Train acc")
-plt.plot(C,testacc,"x-",label="Test acc")
-plt.legend(loc='best')
-plt.title('Accuracies for the Linear SVM')
-plt.xlabel('C')
-plt.ylabel('Accuracy')
-plt.show()
-
-print "\n "
-
-""" Simple test for higher C's """
-SVM_totalresult = []
-for c in C2:
-	print "Training and testing with C as: ",c
-	avg_result = []
-	trainacc = 0
-	testacc  = 0
-	for i in xrange(iterations):
-		LinSVM = svm.SVC(C=c,kernel='linear')
-		LinSVM.fit(VSX,VSY)
-		trainacc += LinSVM.score(VSX,VSY)
-		testacc += LinSVM.score(new_VSX,new_VSY)
-	avg_result = [trainacc/iterations,testacc/iterations]
-	SVM_totalresult.append(avg_result)
-
-""" Restructuring for easy plotting """
-trainacc = [a[0] for a in SVM_totalresult]
-testacc = [a[1] for a in SVM_totalresult]
-plt.plot(C2,trainacc,"x-",label="Train acc")
-plt.plot(C2,testacc,"x-",label="Test acc")
-plt.legend(loc='best')
-plt.xlabel('C')
-plt.ylabel('Accuracy')
-plt.title('Accuracies for the Linear SVM with higher C values')
-plt.show()
+print "Linear SVM Accuracy on train: ", LinSVM.score(VSX,VSY)
+print "Linear SVM Accuracy on test: ", LinSVM.score(new_VSX,new_VSY)
