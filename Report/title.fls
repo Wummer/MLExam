@@ -1,0 +1,11 @@
+PWD /home/alex/Documents/ITandCognition/Statistical Methods for Machine Learning/MLExam/Report
+INPUT /etc/texmf/web2c/texmf.cnf
+INPUT /usr/share/texmf/web2c/texmf.cnf
+INPUT /usr/share/texlive/texmf-dist/web2c/texmf.cnf
+INPUT /var/lib/texmf/web2c/pdftex/pdflatex.fmt
+INPUT /home/alex/Documents/ITandCognition/Statistical Methods for Machine Learning/MLExam/Report/title.tex
+OUTPUT /home/alex/Documents/ITandCognition/Statistical Methods for Machine Learning/MLExam/Report/title.log
+INPUT /usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map
+INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmcsc10.tfm
+INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmbx10.tfm
+INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmti10.tfm

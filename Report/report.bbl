@@ -1,0 +1,24 @@
+\begin{thebibliography}{1}
+
+\bibitem{website:libsvm}
+{\sc Chang, C.-C., and Lin, C.-J.}
+\newblock {LIBSVM}.
+\newblock \url{http://www.csie.ntu.edu.tw/~cjlin/libsvm/}, March 2014.
+
+\bibitem{website:knn-sklearn}
+{\sc Scikit-Learn}.
+\newblock {K}{N}eighbors{C}lassifier.
+\newblock \url{scikit-learn.org/ stable/ modules/ generated/
+  sklearn.neighbors.KNeighborsClassifier.html}, March 2014.
+
+\bibitem{website:sklearn}
+{\sc Scikit-Learn}.
+\newblock {M}achine {L}earning in {P}ython.
+\newblock \url{http://scikit-learn.org}, March 2014.
+
+\bibitem{website:svm-sklearn}
+{\sc Scikit-Learn}.
+\newblock {S}upport {V}ector {M}achines.
+\newblock \url{http://scikit-learn.org/ stable/modules/svm.html}, March 2014.
+
+\end{thebibliography}
