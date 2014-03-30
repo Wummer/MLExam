@@ -8,7 +8,7 @@ from sklearn.neighbors import KNeighborsClassifier
 from sklearn import svm
 from sklearn.cluster import k_means
 
-np.random.seed(2)
+np.random.seed(10)
 
 """ Some Pylab settings to make the plots look nice with LaTeX.
  If you do NOT have LaTeX then uncomment the following statements """
@@ -67,13 +67,13 @@ alphas = np.arange(0.,30.,1)
 
 print "Finding optimal non-linear regression parameters."
 print  "Please wait while it calculates..."
-#bestdeg,bestalpha = REG.MAP_Gridsearch(
-#	SSX_train,SSY_train,SSX_test,SSY_test,alphas,degrees, model="poly")
+bestdeg,bestalpha = REG.MAP_Gridsearch(
+	SSX_train,SSY_train,SSX_test,SSY_test,alphas,degrees, model="poly")
 
 
 print "\nMaximum A posteriori Regression"
-#REG.run(SSX_train,SSY_train,SSX_test,SSY_test,
-#	method="map",model="poly", degree=bestdeg,alpha=bestalpha)
+REG.run(SSX_train,SSY_train,SSX_test,SSY_test,
+	method="map",model="poly", degree=bestdeg,alpha=bestalpha)
 
 
 
@@ -115,16 +115,14 @@ print "Finding optimal Gamma and C pair parameters."
 print  "Please wait while it calculates...\n"
 c,g = CROSSVAL.SVM_Gridsearch(SGX, SGY, 5)
 
-SVC= svm.SVC(kernel="rbf",gamma=g,C=c)
+SVC = svm.SVC(kernel="rbf",gamma=g,C=c)
 SVC.fit(SGX,SGY)
 
 print "RBF SVM Loss on train: ", 1-SVC.score(SGX,SGY)
 print "RBF SVM Loss on test: ", 1-SVC.score(new_SGX,new_SGY)
 
 
-raise SystemExit(0)
-
-
+print "\n"
 """
 -------------------------------------------------------------------------------
  Question 4: Principal Components Analysis
@@ -135,9 +133,6 @@ PCA.py & NORM.py
 
 """
 print "*"*75,"\n Question 4 \n"
-
-SGdata = np.loadtxt("data/SGTrain2014.dt",unpack=False, delimiter=',')
-SGTest = np.loadtxt("data/SGTest2014.dt",unpack=False, delimiter=",")
 
 """
 Since we're only interested in dimensionality reduction of one class
