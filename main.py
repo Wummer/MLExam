@@ -67,13 +67,13 @@ alphas = np.arange(0.,30.,1)
 
 print "Finding optimal non-linear regression parameters."
 print  "Please wait while it calculates..."
-bestdeg,bestalpha = REG.MAP_Gridsearch(
-	SSX_train,SSY_train,SSX_test,SSY_test,alphas,degrees, model="poly")
+#bestdeg,bestalpha = REG.MAP_Gridsearch(
+#	SSX_train,SSY_train,SSX_test,SSY_test,alphas,degrees, model="poly")
 
 
 print "\nMaximum A posteriori Regression"
-REG.run(SSX_train,SSY_train,SSX_test,SSY_test,
-	method="map",model="poly", degree=bestdeg,alpha=bestalpha)
+#REG.run(SSX_train,SSY_train,SSX_test,SSY_test,
+#	method="map",model="poly", degree=bestdeg,alpha=bestalpha)
 
 
 
@@ -90,6 +90,9 @@ print "*"*75,"\n Question 3 \n"
 
 SGdata = np.loadtxt("data/SGTrain2014.dt",unpack=False, delimiter=',')
 SGTest = np.loadtxt("data/SGTest2014.dt",unpack=False, delimiter=",")
+
+np.random.shuffle(SGdata)
+np.random.shuffle(SGTest)
 
 SGX = []
 SGY = []
@@ -109,8 +112,14 @@ SGX = NORM.meanfree(SGTrain)
 new_SGX = NORM.transformtest(SGTrain,new_SGX)
 
 print "Finding optimal Gamma and C pair parameters."
-print  "Please wait while it calculates..."
-CROSSVAL.SVM_Gridsearch(SGX, SGY, 5)
+print  "Please wait while it calculates...\n"
+c,g = CROSSVAL.SVM_Gridsearch(SGX, SGY, 5)
+
+SVC= svm.SVC(kernel="rbf",gamma=g,C=c)
+SVC.fit(SGX,SGY)
+
+print "RBF SVM Loss on train: ", 1-SVC.score(SGX,SGY)
+print "RBF SVM Loss on test: ", 1-SVC.score(new_SGX,new_SGY)
 
 
 raise SystemExit(0)
@@ -244,8 +253,8 @@ Best_K = CROSSVAL.KNN_Crossvalidation(VSX,VSY, 5, K)
 
 KNN = KNeighborsClassifier(n_neighbors=Best_K)
 KNN.fit(VSX,VSY)
-print "KNN Accuracy on train: ",KNN.score(VSX,VSY)
-print "KNN Accuracy on test: ",KNN.score(new_VSX,new_VSY)
+print "KNN Loss on train: ",1-KNN.score(VSX,VSY)
+print "KNN Loss on test: ",1-KNN.score(new_VSX,new_VSY)
 
 print "\n"
 
@@ -263,5 +272,5 @@ Best_C = CROSSVAL.LinSVM_Crossvalidation(VSX,VSY,5,C)
 LinSVM = svm.SVC(kernel='linear',C=Best_C)
 LinSVM.fit(VSX,VSY)
 
-print "Linear SVM Accuracy on train: ", LinSVM.score(VSX,VSY)
-print "Linear SVM Accuracy on test: ", LinSVM.score(new_VSX,new_VSY)
+print "Linear SVM Loss on train: ", 1-LinSVM.score(VSX,VSY)
+print "Linear SVM Loss on test: ", 1-LinSVM.score(new_VSX,new_VSY)
