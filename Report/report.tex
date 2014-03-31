@@ -11,6 +11,9 @@
 \usepackage{hyperref}
 
 \graphicspath{ {Images/} }
+\DeclareGraphicsExtensions{.pdf,.png,.jpg}
+
+\DeclareMathOperator{\sgn}{sgn}
 
 \newcommand{\R}{\mathbb{R}}
 \newcommand{\C}{\mathbb{C}}
@@ -96,27 +99,44 @@ The \textit{(K-)NN} will then try to find the nearest neighbour by calculating t
 The amount of nearest neighbors to be considered can be increased and this notated with a K - hence the name KNN, where the classification decision is based on majority voting between the neighbors. 
 The distance metric itself can also vary, e.g. it can either be Euclidean, Manhattan, Hamming etc., where the three also are known as direct, absolute and binary distances.
 
-A \textit{Linear SVM} will instead try to create a linear spatial decision boundary (in this case a straight line). The data is then divided   . This resembles the approach of the Perceptron, but instead of trying to minimize the amount of errors, it creates the decision boundary at the maximum distance from the nearest data points, which is also known as the support vectors.
-The intuition here being that
-Intuitively this also means that the bigger the distance (or margin) is to the nearest support vectors, the lower amount of prediction errors should be. However, having a v Unlike Perceptron, the SVC can also classify non-linear distributions by creating kernel functions, as we have seen in chapter 2.1. We have simply run the linear SVC, which can arguably be described as a conceptual extension of the Perceptron. With such a comparison we also expect them to perform somewhat similar. \medskip
+A \textit{Linear SVM} will instead try to create a linear spatial decision boundary (in this case a straight line). The data is then divided   . This resembles the approach of the Perceptron, but instead of trying to minimize the amount of errors, it creates the decision boundary at the maximum distance from the nearest data points, which is also known as the support vectors. So instead of finding \textit{a} decision boundary it tries to the \textit{the best} decision boundary.
+Intuitively this also means that the bigger the distance (or margin) is to the nearest support vectors, the lower amount of prediction errors should be.
+It should be noted that having a hard margin may not be ideal, since it can result in overfitting on the train set, which leads  to bad generalizations.
+Unlike Perceptron, the linear SVM can also classify non-linear distributions by utilizing the ``kernel trick'' and projecting the distribution into an unknown, but well-defined, high-dimensional space. In this space the distribution will then become linearly seperable and the decision boundary can be located.
+The kernel itself can also be changed to a non-linear function such as we have seen in chapter 2.1.
+I have simply run the linear SVM, which can arguably be described as a conceptual extension of the Perceptron. \medskip
 
 
-The reason why I included the descriptions of the algorithms is quite simple: I believe that one of the biggest strengths of 
+The reason why I included the descriptions of the algorithms is quite simple: I believe that one of the biggest strengths of both classifiers is how they classify. 
+It makes sense that 
 
 
 \subsubsection{Description of software used}
-For both classifiers I used implementaions from the Scikit-Learn Python library\cite{website:sklearn}.
+For both classifiers I used implementaions from the Scikit-Learn Python library\cite{website:sklearn}. \medskip
 
 The \textit{KNeighborsClassifier} is a KNN implementation that also incorporates an underlying data-structuring algorithm such as a KDTree, Ball Tree or `brute force'\cite{website:knn-sklearn}. 
-The brute force search is the `vanilla' KNN where every data point is iterated over, while both KDTree and Ball Tree partitions the data into trees, where the KNN algorithm then iterates over the tree nodes instead. 
-Any re-structuring of the data of course affects the performance and the decision-making of the classifier. 
-However, as I have a fairly limited knowledge of space-partitioning, I chose the beautiful setting of `auto', also known as the black box approach, where the function itself chooses an appropriate algorithm parameter as to achieve the most efficient solution.
+The brute force search is the `vanilla' KNN where every data point is iterated over, while both KDTree and Ball Tree partitions the data into trees, where the KNN algorithm then iterates over the tree nodes instead.
+Any re-structuring of the data will of course affect the performance and the decision-making of the classifier, where the impact on the former is much higher than the latter. 
+However, as I have a fairly limited knowledge of space-partitioning, I chose the beautiful setting of `auto', also known as the black box approach, where the function itself chooses an appropriate algorithm parameter as to achieve the most efficient solution. The only parameter I then have to supply is the amount of neighbors K. Additionally, the function .score(X,y) returns the accuracy instead of the 1-0 Loss and this I manually convert with $Loss = 1 - Accuracy$. \medskip
 
-The \textit{SVC}\cite{website:svm-sklearn} is a SVM implementation that is based off the LIBSVM \cite{website:libsvm} library. As the SVM is a binary classifier it employs a one-by-one strategy for multiclass classification. This means that the function creates one classifier per class-pair, meaning the class with most votes among the subsets is chosen. This is in contrast to the one-vs-all implementation, where each class is matched against the rest of the classes. As I chose a linear kernel of the form $K(x,x')$ the only relevant hyperparameter I have to supply is C. 
+The \textit{SVC}\cite{website:svm-sklearn} is a SVM implementation that is based off the LIBSVM \cite{website:libsvm} library.
+The mathematical formulation of the learning problem it tries to satisfy is explained in \cite[1.2.7.1. SVC]{website:svm-sklearn}, with the decision function being:
 
+\begin{equation} \label{eq7}
+\sgn{(\sum_{i=1}^n y_i \alpha_i K(x_i,x) + p)}
+\end{equation}
+where $y_i\alpha_i$ is the dual coefficients for the support vectors and p an individual constant term.
+
+As the SVM is a binary classifier it employs a one-by-one strategy for multiclass classification. This means that the function creates one classifier per class-pair, meaning the class with most votes among the subsets is chosen
+\footnote[1]{This means that for a case of n classes there will be a classifier for each pair: 0 vs 1, 0 vs 2, .. 0 vs n, 1 vs 2, .. n-1 vs n}.
+This is in contrast to the one-vs-all implementation, where each class is matched against the rest of the classes. I also chose the output to be deterministic and with the class weight set to 1, meaning each class has the same weight. Furthermore, the function .score(X,y) returns the accuracy  which I then convert to a 0-1 loss.
+As I chose a linear kernel of the form $K(x,x')$ the only relevant hyperparameter I have to supply is C. 
 
 \subsubsection{Results}
-Normalizing + crossvalidation for optimal hyperparameters.
+To achieve the best results I first normalized the data by making it zero-mean with unit variance as I explained in the previous sections.
+I chose to normalize my data for two reasons. 
+Since KNN matches by minimum distances it inherently assumes that all our data has the same range of values, which means that distances between the data points with higher value ranges will be over-emphasised. 
+
 
 \subsection{Overfitting}
 

@@ -3,13 +3,13 @@ Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: report.aux
 The style file: acm.bst
 Database file #1: biblo.bib
-I was expecting a `,' or a `}'---line 43 of file biblo.bib
+I was expecting a `,' or a `}'---line 39 of file biblo.bib
  : @misc{website: 
  :                min-wiki,
 I'm skipping whatever remains of this entry
 You've used 4 entries,
             2253 wiz_defined-function locations,
-            543 strings with 4319 characters,
+            543 strings with 4283 characters,
 and the built_in function-call counts, 917 in all, are:
 = -- 83
 > -- 33

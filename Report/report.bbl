@@ -8,8 +8,8 @@
 \bibitem{website:knn-sklearn}
 {\sc Scikit-Learn}.
 \newblock {K}{N}eighbors{C}lassifier.
-\newblock \url{scikit-learn.org/ stable/ modules/ generated/
-  sklearn.neighbors.KNeighborsClassifier.html}, March 2014.
+\newblock \url{http://scikit-learn.org/stable/modules/neighbors.html}, March
+  2014.
 
 \bibitem{website:sklearn}
 {\sc Scikit-Learn}.
