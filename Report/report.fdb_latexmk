@@ -1,17 +1,17 @@
 # Fdb version 3
-["bibtex report"] 1396264912 "report.aux" "report.bbl" "report" 1396264913
+["bibtex report"] 1396309417 "report.aux" "report.bbl" "report" 1396309775
   "/usr/share/texlive/texmf-dist/bibtex/bst/base/acm.bst" 1292289607 21064 c61a48664f3c347ce7f73c1a6a530506 ""
-  "biblo.bib" 1396264908 1311 23e45dc4bacc8c6d21cbe865df529c81 ""
-  "report.aux" 1396264913 2640 c5f72bdf2ce46a7d18a1293c82a03dc3 ""
+  "biblo.bib" 1396290203 1748 0697ea1e3b9e6341432d1f4e123e6364 ""
+  "report.aux" 1396309543 4533 3a49cf776d7f6c41f891ef00acdda013 ""
   "report.bcf" 0 -1 0 ""
   (generated)
   "report.bbl"
   "report.blg"
-["pdflatex"] 1396264912 "/home/alex/Documents/ITandCognition/Statistical Methods for Machine Learning/MLExam/Report/report.tex" "/home/alex/Documents/ITandCognition/Statistical Methods for Machine Learning/MLExam/Report/report.pdf" "report" 1396264913
+["pdflatex"] 1396309542 "/home/alex/Documents/ITandCognition/Statistical Methods for Machine Learning/MLExam/Report/report.tex" "/home/alex/Documents/ITandCognition/Statistical Methods for Machine Learning/MLExam/Report/report.pdf" "report" 1396309775
   "./title.tex" 1396187323 743 d72c3cd7bc0c6a810a10ea6b1a0859e8 ""
   "/etc/texmf/web2c/texmf.cnf" 1389556239 1101 af7716885e081ab43982cab7b4672c1a ""
-  "/home/alex/Documents/ITandCognition/Statistical Methods for Machine Learning/MLExam/Report/report.aux" 1396264913 2640 c5f72bdf2ce46a7d18a1293c82a03dc3 ""
-  "/home/alex/Documents/ITandCognition/Statistical Methods for Machine Learning/MLExam/Report/report.tex" 1396264910 7728 200e5512326398e8a200a4a5de4edf4c ""
+  "/home/alex/Documents/ITandCognition/Statistical Methods for Machine Learning/MLExam/Report/report.aux" 1396309543 4533 3a49cf776d7f6c41f891ef00acdda013 ""
+  "/home/alex/Documents/ITandCognition/Statistical Methods for Machine Learning/MLExam/Report/report.tex" 1396309774 21537 caf62dfd9b376ba827590ff38ede4607 ""
   "/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc" 1165713224 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1272929888 3287 e6b82fe08f5336d4d5ebc73fb1152e87 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/adobe/courier/pcrr7t.tfm" 1136768653 960 379cc0019370a9e0208a0a3f949f847a ""
@@ -42,6 +42,7 @@
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/rsfs/rsfs7.tfm" 1229303445 692 1b6510779f0f05e9cbf03e0f6c8361e6 ""
   "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb" 1248133631 30251 6afa5cb1d0204815a708a080681d4674 ""
   "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb" 1248133631 36299 5f9df58c2139e7edcf37c8fca4bd384d ""
+  "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb" 1248133631 37912 77d683123f92148345f3fc36a38d9ab1 ""
   "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb" 1248133631 36281 c355509802a035cadc5f15869451dcee ""
   "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb" 1248133631 35752 024fb6c41858982481f6968b5fc26508 ""
   "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb" 1248133631 32762 224316ccc9ad3ca0423a14971cfa7fc1 ""
@@ -107,10 +108,13 @@
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1389556399 1092724 68dfee8822f2be26b3ec35baed7917ed ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1389556334 3823577 82c17fd76623a0cc875b51ab3f50b6ec ""
   "Images/./logo.png" 1396187281 15317 71b4214439b051f29f9596dfb7bcf1ab ""
-  "report.aux" 1396264913 2640 c5f72bdf2ce46a7d18a1293c82a03dc3 ""
-  "report.bbl" 1396264912 690 940915dacd33462c0455fe82c47acf49 "bibtex report"
-  "report.out" 1396264913 959 63de4dd61a05740ee437b4a541ab15cd ""
-  "report.tex" 1396264910 7728 200e5512326398e8a200a4a5de4edf4c ""
+  "Images/Kmeans_PCA.png" 1396292458 72224 85e2c08ab36f8276d81547478c538108 ""
+  "Images/PCA_scatter.png" 1396272382 68236 0bf2683c395ac6a7023fb6749ff27d3b ""
+  "Images/eigenspectrum.png" 1396272370 23254 a907fa638fa00b41d4ee78a5e950e78c ""
+  "report.aux" 1396309543 4533 3a49cf776d7f6c41f891ef00acdda013 ""
+  "report.bbl" 1396309417 952 d616d6729a125c9541f90096a8163e84 "bibtex report"
+  "report.out" 1396309543 959 63de4dd61a05740ee437b4a541ab15cd ""
+  "report.tex" 1396309774 21537 caf62dfd9b376ba827590ff38ede4607 ""
   "title.tex" 1396187323 743 d72c3cd7bc0c6a810a10ea6b1a0859e8 ""
   (generated)
   "/home/alex/Documents/ITandCognition/Statistical Methods for Machine Learning/MLExam/Report/report.log"

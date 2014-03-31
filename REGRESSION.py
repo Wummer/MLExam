@@ -73,7 +73,7 @@ def predict(w, X_test,model,degree):
 	return y
 
 """ 
-This function calculates the Mean Square: 1/N * sum(tn-yn)
+This function calculates the Mean Squared Error.
 t = actual value from the dataset
 y = predicted value 
 """

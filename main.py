@@ -63,7 +63,7 @@ For comments on the specific functions, see REGRESSION.py
 print "*"*75,"\n Question 2 \n"
 #Inherit the alpha values from above
 degrees = np.arange(2,5,1)
-alphas = np.arange(0.,30.,1)
+alphas = np.arange(0.,10,0.5)
 
 print "Finding optimal non-linear regression parameters."
 print  "Please wait while it calculates..."
@@ -76,7 +76,7 @@ REG.run(SSX_train,SSY_train,SSX_test,SSY_test,
 	method="map",model="poly", degree=bestdeg,alpha=bestalpha)
 
 
-
+raise SystemExit(0)
 """
 -------------------------------------------------------------------------------
  Question 3:Binary Classification using Support Vector Machines
@@ -191,9 +191,13 @@ centroids,label,inertia = k_means(SGNorm,n_clusters=2,init="random")
 
 center_x,center_y = PCA.transform(centroids,SGPC)
 
+
+print "First centroid's coordinate",center_x[0],center_y[0]
+print "Second centroid's coordinate",center_x[1],center_y[1]
+
 #plotting the projecting of the centroids onto the 2 PC
 plt.plot(new_SGX,new_SGY,"x",label="Projected data")
-plt.plot(center_x,center_y,"o",label="K-means centroids")
+plt.plot(center_x,center_y,"ro",label="K-means centroids")
 plt.xlabel('First principal component')	
 plt.ylabel('Second principal component')
 plt.legend(loc="best")
@@ -206,6 +210,7 @@ plt.show()
 Question 7: Multi-class Classification
 -------------------------------------------------------------------------------
 In this question I make use of two SK-learn libraries: K-NN and SVM.SVC.
+To see comments on the specific functions, see CROSSVAL.py .
 
 """
 print "*"*75,"\n Question 7 \n\n"

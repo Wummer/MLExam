@@ -1,9 +1,19 @@
 \begin{thebibliography}{1}
 
+\bibitem{bishop}
+{\sc Bishop, C.~M.}
+\newblock {\em Pattern {R}ecognition and {M}achine {L}earning}.
+\newblock Springer, 2006.
+
 \bibitem{website:libsvm}
 {\sc Chang, C.-C., and Lin, C.-J.}
 \newblock {LIBSVM}.
 \newblock \url{http://www.csie.ntu.edu.tw/~cjlin/libsvm/}, March 2014.
+
+\bibitem{website:kmeans}
+{\sc Scikit-Learn}.
+\newblock Clustering.
+\newblock http://scikit-learn.org/stable/modules/clustering.html.
 
 \bibitem{website:knn-sklearn}
 {\sc Scikit-Learn}.
