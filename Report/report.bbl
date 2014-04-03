@@ -10,6 +10,11 @@
 \newblock {LIBSVM}.
 \newblock \url{http://www.csie.ntu.edu.tw/~cjlin/libsvm/}, March 2014.
 
+\bibitem{webiste:blog}
+{\sc Langord, J.}
+\newblock Clever methods of overfitting.
+\newblock http://hunch.net/?p=22.
+
 \bibitem{website:kmeans}
 {\sc Scikit-Learn}.
 \newblock Clustering.

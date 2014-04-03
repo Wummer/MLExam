@@ -76,7 +76,7 @@ REG.run(SSX_train,SSY_train,SSX_test,SSY_test,
 	method="map",model="poly", degree=bestdeg,alpha=bestalpha)
 
 
-raise SystemExit(0)
+
 """
 -------------------------------------------------------------------------------
  Question 3:Binary Classification using Support Vector Machines
@@ -189,6 +189,7 @@ print "*"*75,"\n Question 5 \n"
 
 centroids,label,inertia = k_means(SGNorm,n_clusters=2,init="random")
 
+print "The coordinates of the non-transformed centroids",centroids
 center_x,center_y = PCA.transform(centroids,SGPC)
 
 

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.1.12)  1 APR 2014 01:45
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.1.12)  3 APR 2014 17:55
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -278,61 +278,75 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 82.
 )
 \Hy@SectionHShift=\skip64
+) (/usr/share/texlive/texmf-dist/tex/latex/geometry/geometry.sty
+Package: geometry 2010/09/12 v5.6 Page Geometry
+\Gm@cnth=\count112
+\Gm@cntv=\count113
+\c@Gm@tempcnt=\count114
+\Gm@bindingoffset=\dimen125
+\Gm@wd@mp=\dimen126
+\Gm@odd@mp=\dimen127
+\Gm@even@mp=\dimen128
+\Gm@layoutwidth=\dimen129
+\Gm@layoutheight=\dimen130
+\Gm@layouthoffset=\dimen131
+\Gm@layoutvoffset=\dimen132
+\Gm@dimlist=\toks39
 )
-\c@currthmctr=\count112
-\c@endthmctr=\count113
-\c@currlemctr=\count114
-\c@endlemctr=\count115
-\c@currpropctr=\count116
-\c@endpropctr=\count117
-\c@currcorctr=\count118
-\c@endcorctr=\count119
-\c@currconjctr=\count120
-\c@endconjctr=\count121
-\c@currdefnctr=\count122
-\c@enddefnctr=\count123
-\c@currexctr=\count124
-\c@endexctr=\count125
-\c@currclaimctr=\count126
-\c@endclaimctr=\count127
-\c@currproofctr=\count128
-\c@endproofctr=\count129
-\c@proof=\count130
+\c@currthmctr=\count115
+\c@endthmctr=\count116
+\c@currlemctr=\count117
+\c@endlemctr=\count118
+\c@currpropctr=\count119
+\c@endpropctr=\count120
+\c@currcorctr=\count121
+\c@endcorctr=\count122
+\c@currconjctr=\count123
+\c@endconjctr=\count124
+\c@currdefnctr=\count125
+\c@enddefnctr=\count126
+\c@currexctr=\count127
+\c@endexctr=\count128
+\c@currclaimctr=\count129
+\c@endclaimctr=\count130
+\c@currproofctr=\count131
+\c@endproofctr=\count132
+\c@proof=\count133
 
 (/home/alex/Documents/ITandCognition/Statistical Methods for Machine Learning/M
 LExam/Report/report.aux)
 \openout1 = `report.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 47.
-LaTeX Font Info:    ... okay on input line 47.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 47.
-LaTeX Font Info:    ... okay on input line 47.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 47.
-LaTeX Font Info:    ... okay on input line 47.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 47.
-LaTeX Font Info:    ... okay on input line 47.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 47.
-LaTeX Font Info:    ... okay on input line 47.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 47.
-LaTeX Font Info:    ... okay on input line 47.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 47.
-LaTeX Font Info:    ... okay on input line 47.
-LaTeX Font Info:    Try loading font information for OT1+ptm on input line 47.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 49.
+LaTeX Font Info:    ... okay on input line 49.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 49.
+LaTeX Font Info:    ... okay on input line 49.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 49.
+LaTeX Font Info:    ... okay on input line 49.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 49.
+LaTeX Font Info:    ... okay on input line 49.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 49.
+LaTeX Font Info:    ... okay on input line 49.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 49.
+LaTeX Font Info:    ... okay on input line 49.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 49.
+LaTeX Font Info:    ... okay on input line 49.
+LaTeX Font Info:    Try loading font information for OT1+ptm on input line 49.
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ot1ptm.fd
 File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
 ) (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count131
-\scratchdimen=\dimen125
+\scratchcounter=\count134
+\scratchdimen=\dimen133
 \scratchbox=\box28
-\nofMPsegments=\count132
-\nofMParguments=\count133
-\everyMPshowfont=\toks39
-\MPscratchCnt=\count134
-\MPscratchDim=\dimen126
-\MPnumerator=\count135
-\makeMPintoPDFobject=\count136
-\everyMPtoPDFconversion=\toks40
+\nofMPsegments=\count135
+\nofMParguments=\count136
+\everyMPshowfont=\toks40
+\MPscratchCnt=\count137
+\MPscratchDim=\dimen134
+\MPnumerator=\count138
+\makeMPintoPDFobject=\count139
+\everyMPtoPDFconversion=\toks41
 ) (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 Package: epstopdf-base 2010/02/09 v2.5 Base part for package epstopdf
 (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/grfext.sty
@@ -346,17 +360,17 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
 \AtBeginShipoutBox=\box29
-Package hyperref Info: Link coloring OFF on input line 47.
+Package hyperref Info: Link coloring OFF on input line 49.
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
 Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
-\c@section@level=\count137
+\c@section@level=\count140
 )
-LaTeX Info: Redefining \ref on input line 47.
-LaTeX Info: Redefining \pageref on input line 47.
-LaTeX Info: Redefining \nameref on input line 47.
+LaTeX Info: Redefining \ref on input line 49.
+LaTeX Info: Redefining \pageref on input line 49.
+LaTeX Info: Redefining \nameref on input line 49.
 
 (/home/alex/Documents/ITandCognition/Statistical Methods for Machine Learning/M
 LExam/Report/report.out)
@@ -365,13 +379,47 @@ LExam/Report/report.out)
 \@outlinefile=\write3
 \openout3 = `report.out'.
 
+*geometry* driver: auto-detecting
+*geometry* detected driver: pdftex
+*geometry* verbose mode - [ preamble ] result:
+* driver: pdftex
+* paper: <default>
+* layout: <same size as paper>
+* layoutoffset:(h,v)=(0.0pt,0.0pt)
+* modes: 
+* h-part:(L,W,R)=(108.405pt, 397.485pt, 108.405pt)
+* v-part:(T,H,B)=(108.405pt, 578.15999pt, 108.405pt)
+* \paperwidth=614.295pt
+* \paperheight=794.96999pt
+* \textwidth=397.485pt
+* \textheight=578.15999pt
+* \oddsidemargin=36.13501pt
+* \evensidemargin=36.13501pt
+* \topmargin=-0.86499pt
+* \headheight=12.0pt
+* \headsep=25.0pt
+* \topskip=10.0pt
+* \footskip=30.0pt
+* \marginparwidth=65.0pt
+* \marginparsep=11.0pt
+* \columnsep=10.0pt
+* \skip\footins=9.0pt plus 4.0pt minus 2.0pt
+* \hoffset=0.0pt
+* \voffset=0.0pt
+* \mag=1000
+* \@twocolumnfalse
+* \@twosidefalse
+* \@mparswitchfalse
+* \@reversemarginfalse
+* (1in=72.27pt=25.4mm, 1cm=28.453pt)
+
 
 (/home/alex/Documents/ITandCognition/Statistical Methods for Machine Learning/M
 LExam/Report/./title.tex <Images/./logo.png, id=56, 154.6578pt x 154.29645pt>
 File: Images/./logo.png Graphic file (type png)
 <use Images/./logo.png>
 Package pdftex.def Info: Images/./logo.png used on input line 6.
-(pdftex.def)             Requested size: 68.99895pt x 68.8371pt.
+(pdftex.def)             Requested size: 79.49577pt x 79.30934pt.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <20.74> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 14.
 LaTeX Font Info:    Try loading font information for U+msa on input line 24.
@@ -391,77 +439,86 @@ File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
 Cognition/Statistical Methods for Machine Learning/MLExam/Report/Images/./logo.
 png>])
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <14.4> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 57.
-LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <12> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 59.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <12> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 61.
 pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has 
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.118 T
-       o find the optimal parameters I then perform a gridsearch of the two ...
-[1] [2] <Images/eigenspectrum.png, id=99, 586.8324pt x 442.2924pt>
+l.131 
+       [1] [2] <Images/eigenspectrum.png, id=100, 586.8324pt x 442.2924pt>
 File: Images/eigenspectrum.png Graphic file (type png)
 <use Images/eigenspectrum.png>
-Package pdftex.def Info: Images/eigenspectrum.png used on input line 181.
-(pdftex.def)             Requested size: 188.75726pt x 142.26378pt.
-<Images/PCA_scatter.png, id=101, 586.8324pt x 442.2924pt>
+Package pdftex.def Info: Images/eigenspectrum.png used on input line 215.
+(pdftex.def)             Requested size: 226.50873pt x 170.71652pt.
+<Images/PCA_scatter.png, id=102, 586.8324pt x 442.2924pt>
 File: Images/PCA_scatter.png Graphic file (type png)
 <use Images/PCA_scatter.png>
-Package pdftex.def Info: Images/PCA_scatter.png used on input line 189.
-(pdftex.def)             Requested size: 188.75726pt x 142.26378pt.
-[3 </home/alex/Documents/ITandCognition/Statistical Methods for Machine Learnin
-g/MLExam/Report/Images/eigenspectrum.png>] <Images/Kmeans_PCA.png, id=115, 586.
-8324pt x 442.2924pt>
+Package pdftex.def Info: Images/PCA_scatter.png used on input line 223.
+(pdftex.def)             Requested size: 226.50873pt x 170.71652pt.
+[3] <Images/Kmeans_PCA.png, id=118, 586.8324pt x 442.2924pt>
 File: Images/Kmeans_PCA.png Graphic file (type png)
 <use Images/Kmeans_PCA.png>
-Package pdftex.def Info: Images/Kmeans_PCA.png used on input line 238.
-(pdftex.def)             Requested size: 188.75726pt x 142.26378pt.
+Package pdftex.def Info: Images/Kmeans_PCA.png used on input line 297.
+(pdftex.def)             Requested size: 226.50873pt x 170.71652pt.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 246.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 307.
 Package hyperref Info: bookmark level for unknown claim defaults to 0 on input 
-line 246.
-[4 </home/alex/Documents/ITandCognition/Statistical Methods for Machine Learnin
-g/MLExam/Report/Images/PCA_scatter.png>]
+line 307.
+
+Underfull \hbox (badness 10000) in paragraph at lines 307--308
+
+ []
+
 Package hyperref Info: bookmark level for unknown proof defaults to 0 on input 
-line 250.
-[5 </home/alex/Documents/ITandCognition/Statistical Methods for Machine Learnin
-g/MLExam/Report/Images/Kmeans_PCA.png>] [6] [7]
+line 318.
+[4 </home/alex/Documents/ITandCognition/Statistical Methods for Machine Learnin
+g/MLExam/Report/Images/eigenspectrum.png>] [5 </home/alex/Documents/ITandCognit
+ion/Statistical Methods for Machine Learning/MLExam/Report/Images/PCA_scatter.p
+ng>] [6 </home/alex/Documents/ITandCognition/Statistical Methods for Machine Le
+arning/MLExam/Report/Images/Kmeans_PCA.png>]
+Overfull \hbox (1.86986pt too wide) in paragraph at lines 371--377
+\OT1/ptm/m/n/10 For this part I chose two clas-si-fiers with K-NearestNeighbor 
+(KNN) as my non-linear, non-parametric
+ []
+
+[7] [8] [9]
 (/home/alex/Documents/ITandCognition/Statistical Methods for Machine Learning/M
 LExam/Report/report.bbl
 LaTeX Font Info:    Try loading font information for OT1+pcr on input line 11.
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ot1pcr.fd
 File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
 )
-Underfull \hbox (badness 1248) in paragraph at lines 19--23
+Underfull \hbox (badness 3977) in paragraph at lines 24--28
 []\OT1/ptm/m/sc/10 Scikit-Learn\OT1/ptm/m/n/10 .  KNeigh-borsClas-si-fier.  []$
-\OT1/pcr/m/n/10 http : / / scikit-[]learn . org /
+\OT1/pcr/m/n/10 http : / / scikit-[]learn . org / stable /
  []
 
 )
 \tf@thm=\write4
 \openout4 = `report.thm'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 357.
-[8]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 357.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 507.
+[10]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 507.
 
 (/home/alex/Documents/ITandCognition/Statistical Methods for Machine Learning/M
 LExam/Report/report.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 357.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 357.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 507.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 507.
 Package rerunfilecheck Info: File `report.out' has not changed.
 (rerunfilecheck)             Checksum: 63DE4DD61A05740EE437B4A541AB15CD;959.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 357.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 507.
  ) 
 Here is how much of TeX's memory you used:
- 6821 strings out of 493307
- 98348 string characters out of 6139905
- 184770 words of memory out of 5000000
- 10113 multiletter control sequences out of 15000+600000
- 36563 words of font info for 74 fonts, out of 8000000 for 9000
+ 7281 strings out of 493307
+ 104915 string characters out of 6139905
+ 199811 words of memory out of 5000000
+ 10557 multiletter control sequences out of 15000+600000
+ 37070 words of font info for 75 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
- 29i,11n,43p,604b,438s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 29i,15n,43p,563b,448s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texliv
 e/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texm
 f-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist
@@ -471,15 +528,16 @@ ublic/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/a
 msfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/
 cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cms
 y7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msam1
-0.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/s
-hare/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/te
-xmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/
-type1/urw/times/utmri8a.pfb>
+0.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10
+.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/sh
+are/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/tex
+mf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/t
+ype1/urw/times/utmri8a.pfb>
 Output written on "/home/alex/Documents/ITandCognition/Statistical Methods for 
-Machine Learning/MLExam/Report/report.pdf" (9 pages, 306057 bytes).
+Machine Learning/MLExam/Report/report.pdf" (11 pages, 324820 bytes).
 PDF statistics:
- 226 PDF objects out of 1000 (max. 8388607)
- 193 compressed objects within 2 object streams
- 47 named destinations out of 1000 (max. 500000)
+ 256 PDF objects out of 1000 (max. 8388607)
+ 218 compressed objects within 3 object streams
+ 59 named destinations out of 1000 (max. 500000)
  125 words of extra memory for PDF output out of 10000 (max. 10000000)
 

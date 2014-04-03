@@ -7,45 +7,45 @@ I was expecting a `,' or a `}'---line 39 of file biblo.bib
  : @misc{website: 
  :                min-wiki,
 I'm skipping whatever remains of this entry
-You've used 6 entries,
+You've used 7 entries,
             2253 wiz_defined-function locations,
-            551 strings with 4446 characters,
-and the built_in function-call counts, 1348 in all, are:
-= -- 121
-> -- 47
+            555 strings with 4522 characters,
+and the built_in function-call counts, 1558 in all, are:
+= -- 140
+> -- 54
 < -- 0
-+ -- 20
-- -- 14
-* -- 63
-:= -- 227
-add.period$ -- 18
-call.type$ -- 6
-change.case$ -- 24
++ -- 23
+- -- 16
+* -- 70
+:= -- 261
+add.period$ -- 21
+call.type$ -- 7
+change.case$ -- 28
 chr.to.int$ -- 0
-cite$ -- 6
-duplicate$ -- 53
-empty$ -- 139
-format.name$ -- 14
-if$ -- 288
+cite$ -- 7
+duplicate$ -- 61
+empty$ -- 162
+format.name$ -- 16
+if$ -- 334
 int.to.chr$ -- 0
-int.to.str$ -- 6
+int.to.str$ -- 7
 missing$ -- 2
-newline$ -- 33
-num.names$ -- 12
-pop$ -- 49
+newline$ -- 38
+num.names$ -- 14
+pop$ -- 57
 preamble$ -- 1
-purify$ -- 19
+purify$ -- 22
 quote$ -- 0
-skip$ -- 42
+skip$ -- 50
 stack$ -- 0
-substring$ -- 30
-swap$ -- 12
+substring$ -- 35
+swap$ -- 14
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 22
+type$ -- 26
 warning$ -- 0
-while$ -- 12
-width$ -- 7
-write$ -- 61
+while$ -- 14
+width$ -- 8
+write$ -- 70
 (There was 1 error message)
